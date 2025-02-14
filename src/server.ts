@@ -1,12 +1,15 @@
 // import express.js and create a server
 import express from "express";
 import { instrument } from "@socket.io/admin-ui";
+import cors from "cors";
 
 // import http.js and create a server
 import http from "http";
 const app = express();
 // Add middleware to parse JSON bodies
 app.use(express.json());
+
+app.use(cors());
 
 const server = http.createServer(app);
 

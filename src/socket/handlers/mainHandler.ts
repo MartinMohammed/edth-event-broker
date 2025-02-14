@@ -10,6 +10,9 @@ import { handleLocationChanged } from "./locationChangedHandler";
 import { Socket } from "socket.io";
 import { handleSupportNeeded } from "./supportNeededHandler";
 import { handleSpeech } from "./speechHandler";
+import { handleDartStatusUpdate } from "./dartStatusUpdateHandler";
+import { DartStatusUpdateEvent } from "../../models/interfaces";
+
 export const handleMain = (socket: Socket) => {
   console.log(`Client connected: ${socket.id}`);
 
@@ -39,6 +42,13 @@ export const handleMain = (socket: Socket) => {
   socket.on(TopicsEnum.SPEECH, (payload: SpeechEvent, ...args: any[]) => {
     handleSpeech(socket, payload, ...args);
   });
+
+  socket.on(
+    TopicsEnum.DART_STATUS_UPDATE,
+    (payload: DartStatusUpdateEvent, ...args: any[]) => {
+      handleDartStatusUpdate(socket, payload, ...args);
+    }
+  );
 
   socket.on("unsubscribe", (topic: string) => {
     socket.leave(topic);

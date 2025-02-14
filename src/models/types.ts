@@ -1,17 +1,23 @@
+import { DartStatusEnum } from "./enums";
 import {
   DetectionEvent,
   LocationChangedEvent,
-  SpeechEvent,
   SupportNeededEvent,
+  DartStatusUpdateEvent,
+  DartDeploymentDroneEntity,
+  DataReceiverDroneEntity,
 } from "./interfaces";
 
 // define type for 3D coordinates
 type ThreeDCoordinates = [number, number, number];
 
-type RedirectableEvents =
+type RedirectableEvent =
   | DetectionEvent
   | LocationChangedEvent
-  | SupportNeededEvent;
+  | SupportNeededEvent
+  | DartStatusUpdateEvent;
+
+type Entity = DartDeploymentDroneEntity | DataReceiverDroneEntity;
 
 // named export
-export { ThreeDCoordinates, RedirectableEvents };
+export { ThreeDCoordinates, RedirectableEvent, Entity };

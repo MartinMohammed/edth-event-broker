@@ -11,7 +11,7 @@ import {
 import { handleDetection } from "./detectionHandler";
 import { handleSupportNeeded } from "./supportNeededHandler";
 import { handleLocationChanged } from "./locationChangedHandler";
-import { RedirectableEvents } from "../../models/types";
+import { RedirectableEvent } from "../../models/types";
 
 function getEventsFromSpeech(speech: string) {
   // make api request to LLM which will return structured response for which event(s) the text in the speech deals about
@@ -36,7 +36,7 @@ function getEventsFromSpeech(speech: string) {
   ];
 }
 
-function redirectEvents(socket: Socket, events: RedirectableEvents[]) {
+function redirectEvents(socket: Socket, events: RedirectableEvent[]) {
   for (const event of events) {
     switch (event.topic_name) {
       case TopicsEnum.DETECTION:
@@ -70,7 +70,7 @@ function handleSpeech(socket: Socket, payload: SpeechEvent, ...args: any[]) {
 
   console.log(`[Speech Handler] Events:`, events);
 
-  redirectEvents(socket, events as unknown as RedirectableEvents[]);
+  redirectEvents(socket, events as unknown as RedirectableEvent[]);
 }
 
 export { handleSpeech };

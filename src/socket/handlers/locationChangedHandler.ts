@@ -14,6 +14,7 @@ function handleLocationChanged(
     console.log(`[Location Changed Handler] Additional arguments:`, ...args);
   }
   // validate payload
+  console.log(`[Location Changed Handler] Validating payload:`, payload);
   const validationResult = validatePayload(locationChangedEventSchema, payload);
   if (!validationResult.success) {
     console.error(
