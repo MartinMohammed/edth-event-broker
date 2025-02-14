@@ -1,32 +1,32 @@
 // import express.js and create a server
 import express from "express";
-import { instrument } from "@socket.io/admin-ui";
+import { loggingMiddleware } from "./middlewares/logging";
+import { socketLoggingMiddleware } from "./socket/middlewares/logging";
 import cors from "cors";
-
+import initialStateRouter from "./routes/initialState";
 // import http.js and create a server
 import http from "http";
-const app = express();
-// Add middleware to parse JSON bodies
-app.use(express.json());
-
-app.use(cors());
-
-const server = http.createServer(app);
 
 // import socket.io and make use of express.js server
 import { Server } from "socket.io";
-import { loggingMiddleware } from "./socket/middlewares/logging";
 import { handleMain } from "./socket/handlers/mainHandler";
-// http server host static folder
+import { instrument } from "@socket.io/admin-ui";
+const app = express();
+// Add middleware to parse JSON bodies
+app.use(express.json());
 app.use(express.static("public"));
+app.use(cors());
+
+// logging middleware
+app.use(loggingMiddleware);
+
+// Keep only the router registration
+app.use("/api/initialState", initialStateRouter);
+
+const server = http.createServer(app);
 
 // Add this near the top with other constants
 const PORT = process.env.PORT || 3000;
-
-// Add this after the static middleware
-app.get("/", (req, res) => {
-  res.sendFile("index.html");
-});
 
 // instantiate socket.io server object
 // socket.io server instance attached to the express server (which is a http.server)
@@ -41,7 +41,7 @@ instrument(io, {
   auth: false,
 });
 
-io.use(loggingMiddleware);
+io.use(socketLoggingMiddleware);
 
 io.on("connection", handleMain);
 

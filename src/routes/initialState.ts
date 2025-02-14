@@ -1,11 +1,13 @@
 // route for /api/initialState
 
-import { Request, Response } from "express";
+import { Router } from "express";
 import { EntitiesEnum, DroneStatusEnum, DartStatusEnum } from "../models/enums";
-import { ThreeDCoordinates } from "../models/types";
 import { InitialState } from "../models/interfaces";
 
-const initialState = (req: Request, res: Response) => {
+const router = Router();
+
+router.get("/", (req, res) => {
+  // add logging
   console.log("Initial state");
   // get the initial state for the frontend
   const initialState: InitialState = {
@@ -55,6 +57,6 @@ const initialState = (req: Request, res: Response) => {
     ],
   };
   res.json(initialState);
-};
+});
 
-export default initialState;
+export default router;
