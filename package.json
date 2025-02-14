@@ -1,0 +1,27 @@
+{
+  "name": "european-defense-tech-hub",
+  "version": "1.0.0",
+  "main": "dist/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/server.ts",
+    "build": "tsc",
+    "build_and_start": "npm run build && npm run start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.4",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "@socket.io/admin-ui": "^0.5.1",
+    "express": "^4.21.2",
+    "socket.io": "^4.8.1"
+  }
+}
