@@ -2,12 +2,14 @@ import { TopicsEnum } from "../../models/enums";
 import {
   DetectionEvent,
   LocationChangedEvent,
+  SpeechEvent,
   SupportNeededEvent,
 } from "../../models/interfaces";
 import { handleDetection } from "./detectionHandler";
 import { handleLocationChanged } from "./locationChangedHandler";
 import { Socket } from "socket.io";
 import { handleSupportNeeded } from "./supportNeededHandler";
+import { handleSpeech } from "./speechHandler";
 export const handleMain = (socket: Socket) => {
   console.log(`Client connected: ${socket.id}`);
 
@@ -33,6 +35,11 @@ export const handleMain = (socket: Socket) => {
       handleSupportNeeded(socket, payload, ...args);
     }
   );
+
+  socket.on(TopicsEnum.SPEECH, (payload: SpeechEvent, ...args: any[]) => {
+    handleSpeech(socket, payload, ...args);
+  });
+
   socket.on("unsubscribe", (topic: string) => {
     socket.leave(topic);
   });

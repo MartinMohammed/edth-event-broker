@@ -15,6 +15,7 @@ enum TopicsEnum {
   DETECTION = "detection",
   LOCATION_CHANGED = "locationChanged",
   SUPPORT_NEEDED = "supportNeeded",
+  SPEECH = "speech",
 }
 
 // named export

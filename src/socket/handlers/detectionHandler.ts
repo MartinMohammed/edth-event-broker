@@ -1,6 +1,8 @@
 import { Socket } from "socket.io";
 import { TopicsEnum } from "../../models/enums";
 import { DetectionEvent } from "../../models/interfaces";
+import { detectionEventSchema } from "../../models/schemas";
+import { validatePayload } from "../../utils/ValidatePayloads";
 
 function handleDetection(
   socket: Socket,
@@ -11,6 +13,18 @@ function handleDetection(
   if (args.length > 0) {
     console.log(`[Detection Handler] Additional arguments:`, ...args);
   }
+
+  // validate payload
+  console.log(`[Detection Handler] Validating payload:`, payload);
+  const validationResult = validatePayload(detectionEventSchema, payload);
+  if (!validationResult.success) {
+    console.error(
+      `[Detection Handler] Invalid payload:`,
+      validationResult.error
+    );
+    return;
+  }
+
   // Broadcast to all clients in the DETECTION room, including sender
   socket.broadcast
     .to(TopicsEnum.DETECTION)

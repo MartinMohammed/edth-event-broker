@@ -3,6 +3,8 @@
 import { Socket } from "socket.io";
 import { TopicsEnum } from "../../models/enums";
 import { SupportNeededEvent } from "../../models/interfaces";
+import { supportNeededEventSchema } from "../../models/schemas";
+import { validatePayload } from "../../utils/ValidatePayloads";
 
 function handleSupportNeeded(
   socket: Socket,
@@ -13,6 +15,17 @@ function handleSupportNeeded(
   if (args.length > 0) {
     console.log(`[Support Needed Handler] Additional arguments:`, ...args);
   }
+
+  // validate payload
+  const validationResult = validatePayload(supportNeededEventSchema, payload);
+  if (!validationResult.success) {
+    console.error(
+      `[Support Needed Handler] Invalid payload:`,
+      validationResult.error
+    );
+    return;
+  }
+
   // Broadcast to all clients in the SUPPORT_NEEDED room, including sender
   socket.broadcast
     .to(TopicsEnum.SUPPORT_NEEDED)
