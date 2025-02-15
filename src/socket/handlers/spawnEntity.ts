@@ -25,8 +25,8 @@ function handleSpawnEntity(
   }
   // Broadcast to all clients in the LOCATION_CHANGED room, including sender
   socket.broadcast
-    .to(TopicsEnum.LOCATION_CHANGED)
-    .emit(TopicsEnum.LOCATION_CHANGED, payload, ...args);
+    .to(TopicsEnum.SPAWN_ENTITY)
+    .emit(TopicsEnum.SPAWN_ENTITY, payload, ...args);
   console.log(
     `[Spawn Entity Handler] Broadcasted spawn entity event to topic: ${TopicsEnum.SPAWN_ENTITY}`
   );

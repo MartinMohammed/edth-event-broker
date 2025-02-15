@@ -17,16 +17,16 @@ function getEventsFromSpeech(speech: string) {
   // make api request to LLM which will return structured response for which event(s) the text in the speech deals about
   return [
     {
-      topic_name: TopicsEnum.DETECTION,
-      entity_id: "entity-1",
+      topicName: TopicsEnum.DETECTION,
+      entityId: "entity-1",
       type: "soldier",
       absoluteCoordinates: [48.8566, 2.3522, 0], // Example coordinates (Paris)
       timestamp: new Date().toISOString(), // format of timestamp is in string yyyy-mm-ddThh:mm:ss.msZ
       probability: 0.95, // probability of the entity
     },
     {
-      topic_name: TopicsEnum.SUPPORT_NEEDED,
-      entity_id: "entity-2",
+      topicName: TopicsEnum.SUPPORT_NEEDED,
+      entityId: "entity-2",
       type: "soldier",
       absoluteCoordinates: [48.8566, 2.3522, 0],
       timestamp: new Date().toISOString(),
@@ -38,7 +38,7 @@ function getEventsFromSpeech(speech: string) {
 
 function redirectEvents(socket: Socket, events: RedirectableEvent[]) {
   for (const event of events) {
-    switch (event.topic_name) {
+    switch (event.topicName) {
       case TopicsEnum.DETECTION:
         handleDetection(socket, event as unknown as DetectionEvent);
         break;

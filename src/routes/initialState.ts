@@ -13,46 +13,68 @@ router.get("/", (req, res) => {
   const initialState: InitialState = {
     entities: [
       {
-        id: "1",
+        entityId: "dart-deployment-drone-1",
+        name: "Dart Deployment Drone",
         type: EntitiesEnum.DART_DEPLOYMENT_DRONE,
         status: DroneStatusEnum.IDLE,
         batteryLevel: 95,
-        absoluteCoordinates: [0, 0, 0], // the drone is idle at the origin
+        absoluteCoordinates: [50, 50, 0], // the drone is idle at the origin
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
         darts: [
           {
-            id: "1",
+            entityId: "dart-1",
             type: EntitiesEnum.DART,
             status: DartStatusEnum.NOT_PLANTED,
+            name: "Dart 1",
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString(),
           },
           {
-            id: "2",
+            entityId: "dart-2",
             type: EntitiesEnum.DART,
             status: DartStatusEnum.NOT_PLANTED,
+            name: "Dart 2",
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString(),
           },
           {
-            id: "3",
+            entityId: "dart-3",
             type: EntitiesEnum.DART,
             status: DartStatusEnum.NOT_PLANTED,
+            name: "Dart 3",
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString(),
           },
           {
-            id: "4",
+            entityId: "dart-4",
             type: EntitiesEnum.DART,
             status: DartStatusEnum.NOT_PLANTED,
+            name: "Dart 4",
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString(),
           },
           {
-            id: "5",
+            entityId: "dart-5",
             type: EntitiesEnum.DART,
             status: DartStatusEnum.NOT_PLANTED,
+            name: "Dart 5",
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString(),
           },
         ],
       },
       {
-        id: "2",
+        entityId: "data-receiver-drone-1",
+        name: "Data Receiver Drone",
         type: EntitiesEnum.DATA_RECEIVER_DRONE,
         status: DroneStatusEnum.IDLE,
         pullTimes: [2, 14, 18, 22],
-        absoluteCoordinates: [0, 5, 0], // the drone is idle at the origin
+        absoluteCoordinates: [70, 70, 0], // the drone is idle at the origin
+        pullStatuses: [true], // the first pull was successful, the other three were not initiated now
         batteryLevel: 94,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
       },
     ],
   };
