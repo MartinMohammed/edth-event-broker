@@ -52,6 +52,7 @@ router.get("/", (req, res) => {
         status: DroneStatusEnum.IDLE,
         pullTimes: [2, 14, 18, 22],
         absoluteCoordinates: [0, 5, 0], // the drone is idle at the origin
+        pullStatuses: [true], // the first pull was successful, the other three were not initiated now
         batteryLevel: 94,
       },
     ],

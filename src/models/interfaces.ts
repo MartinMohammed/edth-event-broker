@@ -25,6 +25,11 @@ interface BaseEntity {
   absoluteCoordinates?: ThreeDCoordinates;
 }
 
+interface DroneBaseEntity extends BaseEntity {
+  status: DroneStatusEnum;
+  batteryLevel: number;
+}
+
 // This type is used to detect an entity in the game
 interface DetectionEvent extends BaseEvent {
   type: EntitiesEnum;
@@ -68,19 +73,16 @@ interface Dart extends BaseEntity {
 
 // Interface for the initial states
 // the DartDeploymentDrone is the entity that will deploy the darts all over the map
-interface DartDeploymentDroneEntity extends BaseEntity {
+interface DartDeploymentDroneEntity extends DroneBaseEntity {
   type: EntitiesEnum.DART_DEPLOYMENT_DRONE;
-  status: DroneStatusEnum;
-  batteryLevel: number; // the battery level of the drone
   darts: Dart[];
 }
 
-interface DataReceiverDroneEntity extends BaseEntity {
-  type: EntitiesEnum.DATA_RECEIVER_DRONE;
-  status: DroneStatusEnum;
-  pullTimes: number[]; // the different times in which the drone will pull the data from the darts, the length will determine the number of times the drone will fly in the sky to receive the transmission of the darts.
+interface DataReceiverDroneEntity extends DroneBaseEntity {
   absoluteCoordinates: ThreeDCoordinates;
-  batteryLevel: number; // the battery level of the drone
+  type: EntitiesEnum.DATA_RECEIVER_DRONE;
+  pullTimes: number[]; // the different times in which the drone will pull the data from the darts, the length will determine the number of times the drone will fly in the sky to receive the transmission of the darts.
+  pullStatuses: boolean[]; // contrain truthy value if it was successful, false if failed and lacking a value if a specific pull was not yet done
 }
 
 // named export

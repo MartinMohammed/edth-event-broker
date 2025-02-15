@@ -25,6 +25,11 @@ const baseEntitySchema = z.object({
   absoluteCoordinates: z.array(z.number()).optional(),
 });
 
+const droneBaseEntitySchema = baseEntitySchema.extend({
+  status: z.nativeEnum(DroneStatusEnum),
+  batteryLevel: z.number(),
+});
+
 // Base event schema
 const detectionEventSchema = baseEventSchema.extend({
   type: z.literal(EntitiesEnum.SOLDIER),
@@ -58,18 +63,15 @@ const dartSchema = baseEntitySchema.extend({
   absoluteCoordinates: z.array(z.number()).optional(),
 });
 
-const dartDeploymentDroneSchema = baseEntitySchema.extend({
+const dartDeploymentDroneSchema = droneBaseEntitySchema.extend({
   type: z.literal(EntitiesEnum.DART_DEPLOYMENT_DRONE),
-  status: z.nativeEnum(DroneStatusEnum),
   darts: z.array(dartSchema),
-  batteryLevel: z.number(),
 });
 
-const dataReceiverDroneSchema = baseEntitySchema.extend({
+const dataReceiverDroneSchema = droneBaseEntitySchema.extend({
   type: z.literal(EntitiesEnum.DATA_RECEIVER_DRONE),
-  status: z.nativeEnum(DroneStatusEnum),
   pullTimes: z.array(z.number()),
-  batteryLevel: z.number(),
+  pullStatuses: z.array(z.boolean()),
 });
 
 const spawnEntityEventSchema = baseEventSchema.extend({
