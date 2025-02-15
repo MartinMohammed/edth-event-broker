@@ -4,6 +4,7 @@ import { loggingMiddleware } from "./middlewares/logging";
 import { socketLoggingMiddleware } from "./socket/middlewares/logging";
 import cors from "cors";
 import initialStateRouter from "./routes/initialState";
+import textToSpeechRouter from "./routes/textToSpeech";
 // import http.js and create a server
 import http from "http";
 
@@ -22,6 +23,7 @@ app.use(loggingMiddleware);
 
 // Keep only the router registration
 app.use("/api/initialState", initialStateRouter);
+app.use("/api/textToSpeech", textToSpeechRouter);
 
 const server = http.createServer(app);
 

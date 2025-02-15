@@ -9,6 +9,12 @@ import {
   TopicsEnum,
 } from "./enums";
 
+// Can we also create schemas for the api routes
+// and use them in the routes to validate the request body?
+const textToSpeechSchema = z.object({
+  text: z.string().min(1).max(1000),
+});
+
 // please list example format of the timestamp
 // 2024-01-01T00:00:00.000Z
 const isoTimestampRegex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/;
@@ -94,6 +100,7 @@ const spawnEntityEventSchema = baseEventSchema.extend({
 });
 
 export {
+  textToSpeechSchema,
   detectionEventSchema,
   locationChangedEventSchema,
   supportNeededEventSchema,
