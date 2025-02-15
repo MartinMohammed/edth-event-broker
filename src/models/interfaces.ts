@@ -14,13 +14,15 @@ interface InitialState {
 
 // Events are coming from the websocket connection
 interface BaseEvent {
-  topic_name: TopicsEnum;
-  entity_id: string;
+  topicName: TopicsEnum;
+  eventId: string;
   timestamp: Date;
 }
 
 interface BaseEntity {
-  id: string;
+  entityId: string;
+  createdAt: string;
+  updatedAt: string;
   type: EntitiesEnum;
   absoluteCoordinates?: ThreeDCoordinates;
   name: string;

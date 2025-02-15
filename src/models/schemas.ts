@@ -14,16 +14,18 @@ import {
 const isoTimestampRegex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/;
 
 const baseEventSchema = z.object({
-  topic_name: z.nativeEnum(TopicsEnum),
-  entity_id: z.string(),
+  eventId: z.string(),
+  topicName: z.nativeEnum(TopicsEnum),
   timestamp: z.string().regex(isoTimestampRegex),
 });
 
 const baseEntitySchema = z.object({
-  id: z.string(),
+  entityId: z.string(),
   type: z.nativeEnum(EntitiesEnum), // Changed from literal to nativeEnum to match BaseEntity interface
   absoluteCoordinates: z.array(z.number()).optional(),
   name: z.string(),
+  createdAt: z.string().regex(isoTimestampRegex),
+  updatedAt: z.string().regex(isoTimestampRegex),
 });
 
 const droneBaseEntitySchema = baseEntitySchema.extend({
@@ -33,19 +35,19 @@ const droneBaseEntitySchema = baseEntitySchema.extend({
 
 // Base event schema
 const detectionEventSchema = baseEventSchema.extend({
-  topic_name: z.literal(TopicsEnum.DETECTION),
+  topicName: z.literal(TopicsEnum.DETECTION),
   type: z.nativeEnum(EntitiesEnum),
   absoluteCoordinates: z.array(z.number()),
   probability: z.number(),
 });
 
 const locationChangedEventSchema = baseEventSchema.extend({
-  topic_name: z.literal(TopicsEnum.LOCATION_CHANGED),
+  topicName: z.literal(TopicsEnum.LOCATION_CHANGED),
   absoluteCoordinates: z.array(z.number()),
 });
 
 const supportNeededEventSchema = baseEventSchema.extend({
-  topic_name: z.literal(TopicsEnum.SUPPORT_NEEDED),
+  topicName: z.literal(TopicsEnum.SUPPORT_NEEDED),
   type: z.nativeEnum(EntitiesEnum),
   absoluteCoordinates: z.array(z.number()),
   supportType: z.nativeEnum(SupportTypesEnum),
@@ -53,13 +55,13 @@ const supportNeededEventSchema = baseEventSchema.extend({
 });
 
 const speechEventSchema = baseEventSchema.extend({
-  topic_name: z.literal(TopicsEnum.SPEECH),
-  target_id: z.string().optional(),
+  topicName: z.literal(TopicsEnum.SPEECH),
+  targetId: z.string().optional(),
   text: z.string(),
 });
 
 const dartStatusUpdateSchema = baseEventSchema.extend({
-  topic_name: z.literal(TopicsEnum.DART_STATUS_UPDATE),
+  topicName: z.literal(TopicsEnum.DART_STATUS_UPDATE),
   status: z.nativeEnum(DartStatusEnum),
 });
 
@@ -82,7 +84,7 @@ const dataReceiverDroneSchema = droneBaseEntitySchema.extend({
 });
 
 const spawnEntityEventSchema = baseEventSchema.extend({
-  topic_name: z.literal(TopicsEnum.SPAWN_ENTITY),
+  topicName: z.literal(TopicsEnum.SPAWN_ENTITY),
   // can be of multiple types
   entity: z.union([
     dartDeploymentDroneSchema,
