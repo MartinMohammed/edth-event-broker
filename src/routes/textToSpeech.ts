@@ -26,7 +26,7 @@ router.post("/", async (req: Request, res: Response) => {
     const { text } = validation.data;
     console.log("[Text-to-Speech Route] Text:", text);
     const audioBase64 = await ElevenLabsService.textToSpeech(text);
-    console.log("[Text-to-Speech Route] Audio base64:", audioBase64);
+    // console.log("[Text-to-Speech Route] Audio base64:", audioBase64);
     return res.json({
       audio: audioBase64,
       format: "mp3",

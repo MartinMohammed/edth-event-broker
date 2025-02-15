@@ -18,7 +18,7 @@ router.get("/", (req, res) => {
         type: EntitiesEnum.DART_DEPLOYMENT_DRONE,
         status: DroneStatusEnum.IDLE,
         batteryLevel: 95,
-        absoluteCoordinates: [0, 0, 0], // the drone is idle at the origin
+        absoluteCoordinates: [50, 50, 0], // the drone is idle at the origin
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
         darts: [
@@ -70,7 +70,7 @@ router.get("/", (req, res) => {
         type: EntitiesEnum.DATA_RECEIVER_DRONE,
         status: DroneStatusEnum.IDLE,
         pullTimes: [2, 14, 18, 22],
-        absoluteCoordinates: [0, 5, 0], // the drone is idle at the origin
+        absoluteCoordinates: [70, 70, 0], // the drone is idle at the origin
         pullStatuses: [true], // the first pull was successful, the other three were not initiated now
         batteryLevel: 94,
         createdAt: new Date().toISOString(),
