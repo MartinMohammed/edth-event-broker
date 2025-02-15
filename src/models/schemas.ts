@@ -21,8 +21,9 @@ const baseEventSchema = z.object({
 
 const baseEntitySchema = z.object({
   id: z.string(),
-  type: z.literal(EntitiesEnum.SOLDIER),
+  type: z.nativeEnum(EntitiesEnum), // Changed from literal to nativeEnum to match BaseEntity interface
   absoluteCoordinates: z.array(z.number()).optional(),
+  name: z.string(),
 });
 
 const droneBaseEntitySchema = baseEntitySchema.extend({
@@ -32,33 +33,38 @@ const droneBaseEntitySchema = baseEntitySchema.extend({
 
 // Base event schema
 const detectionEventSchema = baseEventSchema.extend({
-  type: z.literal(EntitiesEnum.SOLDIER),
+  topic_name: z.literal(TopicsEnum.DETECTION),
+  type: z.nativeEnum(EntitiesEnum),
   absoluteCoordinates: z.array(z.number()),
   probability: z.number(),
 });
 
 const locationChangedEventSchema = baseEventSchema.extend({
+  topic_name: z.literal(TopicsEnum.LOCATION_CHANGED),
   absoluteCoordinates: z.array(z.number()),
 });
 
 const supportNeededEventSchema = baseEventSchema.extend({
-  type: z.literal(EntitiesEnum.SOLDIER),
+  topic_name: z.literal(TopicsEnum.SUPPORT_NEEDED),
+  type: z.nativeEnum(EntitiesEnum),
   absoluteCoordinates: z.array(z.number()),
   supportType: z.nativeEnum(SupportTypesEnum),
   description: z.string(),
 });
 
 const speechEventSchema = baseEventSchema.extend({
-  type: z.literal(EntitiesEnum.SOLDIER),
+  topic_name: z.literal(TopicsEnum.SPEECH),
   target_id: z.string().optional(),
   text: z.string(),
 });
 
 const dartStatusUpdateSchema = baseEventSchema.extend({
+  topic_name: z.literal(TopicsEnum.DART_STATUS_UPDATE),
   status: z.nativeEnum(DartStatusEnum),
 });
 
 const dartSchema = baseEntitySchema.extend({
+  type: z.literal(EntitiesEnum.DART),
   status: z.nativeEnum(DartStatusEnum),
   absoluteCoordinates: z.array(z.number()).optional(),
 });
@@ -70,11 +76,13 @@ const dartDeploymentDroneSchema = droneBaseEntitySchema.extend({
 
 const dataReceiverDroneSchema = droneBaseEntitySchema.extend({
   type: z.literal(EntitiesEnum.DATA_RECEIVER_DRONE),
+  absoluteCoordinates: z.array(z.number()),
   pullTimes: z.array(z.number()),
   pullStatuses: z.array(z.boolean()),
 });
 
 const spawnEntityEventSchema = baseEventSchema.extend({
+  topic_name: z.literal(TopicsEnum.SPAWN_ENTITY),
   type: z.nativeEnum(EntitiesEnum),
   absoluteCoordinates: z.array(z.number()),
 });

@@ -14,6 +14,7 @@ router.get("/", (req, res) => {
     entities: [
       {
         id: "1",
+        name: "Dart Deployment Drone",
         type: EntitiesEnum.DART_DEPLOYMENT_DRONE,
         status: DroneStatusEnum.IDLE,
         batteryLevel: 95,
@@ -23,31 +24,37 @@ router.get("/", (req, res) => {
             id: "1",
             type: EntitiesEnum.DART,
             status: DartStatusEnum.NOT_PLANTED,
+            name: "Dart 1",
           },
           {
             id: "2",
             type: EntitiesEnum.DART,
             status: DartStatusEnum.NOT_PLANTED,
+            name: "Dart 2",
           },
           {
             id: "3",
             type: EntitiesEnum.DART,
             status: DartStatusEnum.NOT_PLANTED,
+            name: "Dart 3",
           },
           {
             id: "4",
             type: EntitiesEnum.DART,
             status: DartStatusEnum.NOT_PLANTED,
+            name: "Dart 4",
           },
           {
             id: "5",
             type: EntitiesEnum.DART,
             status: DartStatusEnum.NOT_PLANTED,
+            name: "Dart 5",
           },
         ],
       },
       {
         id: "2",
+        name: "Data Receiver Drone",
         type: EntitiesEnum.DATA_RECEIVER_DRONE,
         status: DroneStatusEnum.IDLE,
         pullTimes: [2, 14, 18, 22],

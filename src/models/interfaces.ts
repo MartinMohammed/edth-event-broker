@@ -23,6 +23,7 @@ interface BaseEntity {
   id: string;
   type: EntitiesEnum;
   absoluteCoordinates?: ThreeDCoordinates;
+  name: string;
 }
 
 interface DroneBaseEntity extends BaseEntity {
