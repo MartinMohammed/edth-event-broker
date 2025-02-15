@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
   const initialState: InitialState = {
     entities: [
       {
-        entityId: "1",
+        entityId: "dart-deployment-drone-1",
         name: "Dart Deployment Drone",
         type: EntitiesEnum.DART_DEPLOYMENT_DRONE,
         status: DroneStatusEnum.IDLE,
@@ -23,7 +23,7 @@ router.get("/", (req, res) => {
         updatedAt: new Date().toISOString(),
         darts: [
           {
-            entityId: "1",
+            entityId: "dart-1",
             type: EntitiesEnum.DART,
             status: DartStatusEnum.NOT_PLANTED,
             name: "Dart 1",
@@ -31,7 +31,7 @@ router.get("/", (req, res) => {
             updatedAt: new Date().toISOString(),
           },
           {
-            entityId: "2",
+            entityId: "dart-2",
             type: EntitiesEnum.DART,
             status: DartStatusEnum.NOT_PLANTED,
             name: "Dart 2",
@@ -39,7 +39,7 @@ router.get("/", (req, res) => {
             updatedAt: new Date().toISOString(),
           },
           {
-            entityId: "3",
+            entityId: "dart-3",
             type: EntitiesEnum.DART,
             status: DartStatusEnum.NOT_PLANTED,
             name: "Dart 3",
@@ -47,7 +47,7 @@ router.get("/", (req, res) => {
             updatedAt: new Date().toISOString(),
           },
           {
-            entityId: "4",
+            entityId: "dart-4",
             type: EntitiesEnum.DART,
             status: DartStatusEnum.NOT_PLANTED,
             name: "Dart 4",
@@ -55,7 +55,7 @@ router.get("/", (req, res) => {
             updatedAt: new Date().toISOString(),
           },
           {
-            entityId: "5",
+            entityId: "dart-5",
             type: EntitiesEnum.DART,
             status: DartStatusEnum.NOT_PLANTED,
             name: "Dart 5",
@@ -65,7 +65,7 @@ router.get("/", (req, res) => {
         ],
       },
       {
-        entityId: "2",
+        entityId: "data-receiver-drone-1",
         name: "Data Receiver Drone",
         type: EntitiesEnum.DATA_RECEIVER_DRONE,
         status: DroneStatusEnum.IDLE,
