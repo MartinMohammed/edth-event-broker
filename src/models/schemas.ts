@@ -83,8 +83,12 @@ const dataReceiverDroneSchema = droneBaseEntitySchema.extend({
 
 const spawnEntityEventSchema = baseEventSchema.extend({
   topic_name: z.literal(TopicsEnum.SPAWN_ENTITY),
-  type: z.nativeEnum(EntitiesEnum),
-  absoluteCoordinates: z.array(z.number()),
+  // can be of multiple types
+  entity: z.union([
+    dartDeploymentDroneSchema,
+    dataReceiverDroneSchema,
+    dartSchema,
+  ]),
 });
 
 export {

@@ -1,4 +1,3 @@
-import { DartStatusEnum } from "./enums";
 import {
   DetectionEvent,
   LocationChangedEvent,
@@ -6,6 +5,7 @@ import {
   DartStatusUpdateEvent,
   DartDeploymentDroneEntity,
   DataReceiverDroneEntity,
+  DartEntity,
   SpawnEntityEvent,
 } from "./interfaces";
 
@@ -19,7 +19,7 @@ type RedirectableEvent =
   | DartStatusUpdateEvent
   | SpawnEntityEvent;
 
-type Entity = DartDeploymentDroneEntity | DataReceiverDroneEntity;
+type Entity = DartDeploymentDroneEntity | DataReceiverDroneEntity | DartEntity;
 
 // named export
 export { ThreeDCoordinates, RedirectableEvent, Entity };

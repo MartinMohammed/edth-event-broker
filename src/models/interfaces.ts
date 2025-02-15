@@ -56,17 +56,18 @@ interface SpeechEvent extends BaseEvent {
   text: string;
 }
 
+// Used for status updates of the darts
 interface DartStatusUpdateEvent extends BaseEvent {
   status: DartStatusEnum;
 }
 
+// Used for initialization
+// difference to detection event is that the entity is not detected but spawned
 interface SpawnEntityEvent extends BaseEvent {
-  type: EntitiesEnum;
-  absoluteCoordinates: ThreeDCoordinates;
-  // difference to detection event is that the entity is not detected but spawned
+  entity: Entity;
 }
 
-interface Dart extends BaseEntity {
+interface DartEntity extends BaseEntity {
   type: EntitiesEnum.DART;
   status: DartStatusEnum;
   absoluteCoordinates?: ThreeDCoordinates; // optional because the dart is not deployed yet
@@ -76,7 +77,7 @@ interface Dart extends BaseEntity {
 // the DartDeploymentDrone is the entity that will deploy the darts all over the map
 interface DartDeploymentDroneEntity extends DroneBaseEntity {
   type: EntitiesEnum.DART_DEPLOYMENT_DRONE;
-  darts: Dart[];
+  darts: DartEntity[];
 }
 
 interface DataReceiverDroneEntity extends DroneBaseEntity {
@@ -91,6 +92,7 @@ export {
   DetectionEvent,
   LocationChangedEvent,
   SupportNeededEvent,
+  DartEntity,
   SpeechEvent,
   DartStatusUpdateEvent,
   SpawnEntityEvent,
