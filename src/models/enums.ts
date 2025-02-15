@@ -24,6 +24,7 @@ enum TopicsEnum {
 
 enum DartStatusEnum {
   NOT_PLANTED = "notPlanted",
+  UP_TO_BE_PLANTED = "upToBePlanted",
   PLANTED = "planted",
   NOT_RESPONDING = "notResponding", // wait for three pulse beats before transitioning to destroyed
   DESTROYED = "destroyed",
