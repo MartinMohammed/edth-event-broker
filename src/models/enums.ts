@@ -19,6 +19,7 @@ enum TopicsEnum {
   SUPPORT_NEEDED = "supportNeeded",
   SPEECH = "speech",
   DART_STATUS_UPDATE = "dartStatusUpdate",
+  SPAWN_ENTITY = "spawnEntity",
 }
 
 enum DartStatusEnum {

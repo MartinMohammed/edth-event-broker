@@ -54,6 +54,12 @@ interface DartStatusUpdateEvent extends BaseEvent {
   status: DartStatusEnum;
 }
 
+interface SpawnEntityEvent extends BaseEvent {
+  type: EntitiesEnum;
+  absoluteCoordinates: ThreeDCoordinates;
+  // difference to detection event is that the entity is not detected but spawned
+}
+
 interface Dart extends BaseEntity {
   type: EntitiesEnum.DART;
   status: DartStatusEnum;
@@ -84,6 +90,7 @@ export {
   SupportNeededEvent,
   SpeechEvent,
   DartStatusUpdateEvent,
+  SpawnEntityEvent,
   DartDeploymentDroneEntity,
   DataReceiverDroneEntity,
   InitialState,

@@ -11,7 +11,11 @@ import { Socket } from "socket.io";
 import { handleSupportNeeded } from "./supportNeededHandler";
 import { handleSpeech } from "./speechHandler";
 import { handleDartStatusUpdate } from "./dartStatusUpdateHandler";
-import { DartStatusUpdateEvent } from "../../models/interfaces";
+import {
+  DartStatusUpdateEvent,
+  SpawnEntityEvent,
+} from "../../models/interfaces";
+import { handleSpawnEntity } from "./spawnEntity";
 
 export const handleMain = (socket: Socket) => {
   console.log(`Client connected: ${socket.id}`);
@@ -50,6 +54,12 @@ export const handleMain = (socket: Socket) => {
     }
   );
 
+  socket.on(
+    TopicsEnum.SPAWN_ENTITY,
+    (payload: SpawnEntityEvent, ...args: any[]) => {
+      handleSpawnEntity(socket, payload, ...args);
+    }
+  );
   socket.on("unsubscribe", (topic: string) => {
     socket.leave(topic);
   });

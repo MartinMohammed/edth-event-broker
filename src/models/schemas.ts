@@ -72,6 +72,11 @@ const dataReceiverDroneSchema = baseEntitySchema.extend({
   batteryLevel: z.number(),
 });
 
+const spawnEntityEventSchema = baseEventSchema.extend({
+  type: z.nativeEnum(EntitiesEnum),
+  absoluteCoordinates: z.array(z.number()),
+});
+
 export {
   detectionEventSchema,
   locationChangedEventSchema,
@@ -80,4 +85,5 @@ export {
   dartStatusUpdateSchema,
   dartDeploymentDroneSchema,
   dataReceiverDroneSchema,
+  spawnEntityEventSchema,
 };

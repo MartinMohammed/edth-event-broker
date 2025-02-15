@@ -6,6 +6,7 @@ import {
   DartStatusUpdateEvent,
   DartDeploymentDroneEntity,
   DataReceiverDroneEntity,
+  SpawnEntityEvent,
 } from "./interfaces";
 
 // define type for 3D coordinates
@@ -15,7 +16,8 @@ type RedirectableEvent =
   | DetectionEvent
   | LocationChangedEvent
   | SupportNeededEvent
-  | DartStatusUpdateEvent;
+  | DartStatusUpdateEvent
+  | SpawnEntityEvent;
 
 type Entity = DartDeploymentDroneEntity | DataReceiverDroneEntity;
 
