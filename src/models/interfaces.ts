@@ -43,6 +43,7 @@ interface DetectionEvent extends BaseEvent {
 // This type is used to detect a location change of an entity in the game
 interface LocationChangedEvent extends BaseEvent {
   absoluteCoordinates: ThreeDCoordinates;
+  entityId: string; // reference to the entity that changed its location
 }
 
 // This type is used to detect a support needed event
