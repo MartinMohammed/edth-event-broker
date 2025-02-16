@@ -49,8 +49,6 @@ interface HelicopterBaseEntity extends BaseEntity {
 
 // This type is used to detect an entity in the game
 interface DetectionEvent extends BaseEvent {
-  type: EntitiesEnum;
-  absoluteCoordinates: ThreeDCoordinates;
   probability: number; // probability of the entity
   lastSeen: string;
   entity: Entity;
