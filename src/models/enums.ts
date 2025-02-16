@@ -23,6 +23,16 @@ enum TopicsEnum {
   SPAWN_ENTITY = "spawnEntity",
 }
 
+// give different types of tanks that are used in the russian war
+enum TankTypeEnum {
+  TANK = "T-90",
+}
+
+enum TankStatusEnum {
+  ACTIVE = "active",
+  DESTROYED = "destroyed",
+}
+
 enum DartStatusEnum {
   NOT_PLANTED = "notPlanted",
   UP_TO_BE_PLANTED = "upToBePlanted",
@@ -42,6 +52,8 @@ export {
   EntitiesEnum,
   SupportTypesEnum,
   TopicsEnum,
+  TankTypeEnum,
+  TankStatusEnum,
   DartStatusEnum,
   DroneStatusEnum,
 };

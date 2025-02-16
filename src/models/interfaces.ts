@@ -4,6 +4,8 @@ import {
   EntitiesEnum,
   SupportTypesEnum,
   TopicsEnum,
+  TankTypeEnum,
+  TankStatusEnum,
 } from "./enums";
 import { ThreeDCoordinates, Entity } from "./types";
 
@@ -33,12 +35,18 @@ interface DroneBaseEntity extends BaseEntity {
   batteryLevel: number;
 }
 
+interface TankBaseEntity extends BaseEntity {
+  name: TankTypeEnum;
+  status: TankStatusEnum;
+}
+
 // This type is used to detect an entity in the game
 interface DetectionEvent extends BaseEvent {
   type: EntitiesEnum;
   absoluteCoordinates: ThreeDCoordinates;
   probability: number; // probability of the entity
   lastSeen: string;
+  entity: Entity;
 }
 
 // This type is used to detect a location change of an entity in the game
@@ -103,4 +111,5 @@ export {
   DartDeploymentDroneEntity,
   DataReceiverDroneEntity,
   InitialState,
+  TankBaseEntity,
 };

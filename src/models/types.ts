@@ -7,6 +7,7 @@ import {
   DataReceiverDroneEntity,
   DartEntity,
   SpawnEntityEvent,
+  TankBaseEntity,
 } from "./interfaces";
 
 // define type for 3D coordinates
@@ -19,7 +20,11 @@ type RedirectableEvent =
   | DartStatusUpdateEvent
   | SpawnEntityEvent;
 
-type Entity = DartDeploymentDroneEntity | DataReceiverDroneEntity | DartEntity;
+type Entity =
+  | DartDeploymentDroneEntity
+  | DataReceiverDroneEntity
+  | DartEntity
+  | TankBaseEntity;
 
 // named export
 export { ThreeDCoordinates, RedirectableEvent, Entity };

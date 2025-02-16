@@ -6,6 +6,8 @@ import {
   DroneStatusEnum,
   EntitiesEnum,
   SupportTypesEnum,
+  TankStatusEnum,
+  TankTypeEnum,
   TopicsEnum,
 } from "./enums";
 
@@ -39,6 +41,11 @@ const droneBaseEntitySchema = baseEntitySchema.extend({
   batteryLevel: z.number(),
 });
 
+const tankBaseEntitySchema = baseEntitySchema.extend({
+  name: z.nativeEnum(TankTypeEnum),
+  status: z.nativeEnum(TankStatusEnum),
+});
+
 // Base event schema
 const detectionEventSchema = baseEventSchema.extend({
   topicName: z.literal(TopicsEnum.DETECTION),
@@ -46,6 +53,7 @@ const detectionEventSchema = baseEventSchema.extend({
   absoluteCoordinates: z.array(z.number()),
   probability: z.number(),
   lastSeen: z.string().regex(isoTimestampRegex),
+  entity: z.union([tankBaseEntitySchema, droneBaseEntitySchema]),
 });
 
 const locationChangedEventSchema = baseEventSchema.extend({
