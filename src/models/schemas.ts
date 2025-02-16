@@ -5,6 +5,8 @@ import {
   DartStatusEnum,
   DroneStatusEnum,
   EntitiesEnum,
+  HelicopterStatusEnum,
+  HelicopterTypeEnum,
   SupportTypesEnum,
   TankStatusEnum,
   TankTypeEnum,
@@ -46,6 +48,11 @@ const tankBaseEntitySchema = baseEntitySchema.extend({
   status: z.nativeEnum(TankStatusEnum),
 });
 
+const helicopterBaseEntitySchema = baseEntitySchema.extend({
+  name: z.nativeEnum(HelicopterTypeEnum),
+  status: z.nativeEnum(HelicopterStatusEnum),
+});
+
 // Base event schema
 const detectionEventSchema = baseEventSchema.extend({
   topicName: z.literal(TopicsEnum.DETECTION),
@@ -53,7 +60,11 @@ const detectionEventSchema = baseEventSchema.extend({
   absoluteCoordinates: z.array(z.number()),
   probability: z.number(),
   lastSeen: z.string().regex(isoTimestampRegex),
-  entity: z.union([tankBaseEntitySchema, droneBaseEntitySchema]),
+  entity: z.union([
+    tankBaseEntitySchema,
+    droneBaseEntitySchema,
+    helicopterBaseEntitySchema,
+  ]),
 });
 
 const locationChangedEventSchema = baseEventSchema.extend({

@@ -6,6 +6,8 @@ import {
   TopicsEnum,
   TankTypeEnum,
   TankStatusEnum,
+  HelicopterStatusEnum,
+  HelicopterTypeEnum,
 } from "./enums";
 import { ThreeDCoordinates, Entity } from "./types";
 
@@ -38,6 +40,11 @@ interface DroneBaseEntity extends BaseEntity {
 interface TankBaseEntity extends BaseEntity {
   name: TankTypeEnum;
   status: TankStatusEnum;
+}
+
+interface HelicopterBaseEntity extends BaseEntity {
+  name: HelicopterTypeEnum;
+  status: HelicopterStatusEnum;
 }
 
 // This type is used to detect an entity in the game
@@ -106,6 +113,7 @@ export {
   SupportNeededEvent,
   DartEntity,
   SpeechEvent,
+  HelicopterBaseEntity,
   DartStatusUpdateEvent,
   SpawnEntityEvent,
   DartDeploymentDroneEntity,

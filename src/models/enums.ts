@@ -28,6 +28,10 @@ enum TankTypeEnum {
   TANK = "T-90",
 }
 
+enum HelicopterTypeEnum {
+  HELICOPTER = "Mi-24",
+}
+
 enum TankStatusEnum {
   ACTIVE = "active",
   DESTROYED = "destroyed",
@@ -39,6 +43,12 @@ enum DartStatusEnum {
   PLANTED = "planted",
   NOT_RESPONDING = "notResponding", // wait for three pulse beats before transitioning to destroyed
   DESTROYED = "destroyed",
+}
+
+enum HelicopterStatusEnum {
+  IDLE = "idle",
+  FLYING = "flying",
+  LANDED = "landed",
 }
 
 enum DroneStatusEnum {
@@ -53,7 +63,9 @@ export {
   SupportTypesEnum,
   TopicsEnum,
   TankTypeEnum,
+  HelicopterTypeEnum,
   TankStatusEnum,
   DartStatusEnum,
+  HelicopterStatusEnum,
   DroneStatusEnum,
 };

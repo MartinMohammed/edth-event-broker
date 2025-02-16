@@ -8,6 +8,7 @@ import {
   DartEntity,
   SpawnEntityEvent,
   TankBaseEntity,
+  HelicopterBaseEntity,
 } from "./interfaces";
 
 // define type for 3D coordinates
@@ -24,7 +25,8 @@ type Entity =
   | DartDeploymentDroneEntity
   | DataReceiverDroneEntity
   | DartEntity
-  | TankBaseEntity;
+  | TankBaseEntity
+  | HelicopterBaseEntity;
 
 // named export
 export { ThreeDCoordinates, RedirectableEvent, Entity };
