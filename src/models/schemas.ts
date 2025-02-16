@@ -56,8 +56,6 @@ const helicopterBaseEntitySchema = baseEntitySchema.extend({
 // Base event schema
 const detectionEventSchema = baseEventSchema.extend({
   topicName: z.literal(TopicsEnum.DETECTION),
-  type: z.nativeEnum(EntitiesEnum),
-  absoluteCoordinates: z.array(z.number()),
   probability: z.number(),
   lastSeen: z.string().regex(isoTimestampRegex),
   entity: z.union([
