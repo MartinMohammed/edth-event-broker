@@ -38,6 +38,7 @@ interface DetectionEvent extends BaseEvent {
   type: EntitiesEnum;
   absoluteCoordinates: ThreeDCoordinates;
   probability: number; // probability of the entity
+  lastSeen: string;
 }
 
 // This type is used to detect a location change of an entity in the game
