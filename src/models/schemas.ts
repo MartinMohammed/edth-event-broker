@@ -45,6 +45,7 @@ const detectionEventSchema = baseEventSchema.extend({
   type: z.nativeEnum(EntitiesEnum),
   absoluteCoordinates: z.array(z.number()),
   probability: z.number(),
+  lastSeen: z.string().regex(isoTimestampRegex),
 });
 
 const locationChangedEventSchema = baseEventSchema.extend({
