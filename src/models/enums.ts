@@ -2,6 +2,7 @@
 enum EntitiesEnum {
   TANK = "tank",
   SOLDIER = "soldier",
+  HELICOPTER = "helicopter",
   DATA_RECEIVER_DRONE = "dataReceiverDrone",
   DART_DEPLOYMENT_DRONE = "dartDeploymentDrone",
   JAMMER = "jammer",
